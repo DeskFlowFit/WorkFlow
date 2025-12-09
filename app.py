@@ -1,35 +1,32 @@
-from flask import Flask, render_template_string
+from flask import Flask
 import os
 
-app = Flask(__name__, static_folder='out', static_url_path='')
+app = Flask(__name__)
 
 @app.route('/')
 def index():
-    try:
-        with open('out/index.html', 'r') as f:
-            return f.read()
-    except:
-        return """
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>WorkFlow</title>
-            <style>
-                body { font-family: Arial; text-align: center; padding: 50px; }
-                h1 { color: #333; }
-                iframe { width: 100%; height: 100vh; border: none; }
-            </style>
-        </head>
-        <body>
-            <h1>WorkFlow App</h1>
-            <iframe src="https://ai.studio/apps/drive/1uoOUa92s8yhqOVDnZUr-2o2C8RFwidz7" allowfullscreen></iframe>
-        </body>
-        </html>
-        """
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>WorkFlow</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: Arial; }
+            iframe { width: 100vw; height: 100vh; border: none; }
+        </style>
+    </head>
+    <body>
+        <iframe src="https://ai.studio/apps/drive/1uoOUa92s8yhqOVDnZUr-2o2C8RFwidz7"></iframe>
+    </body>
+    </html>
+    """
+    return html
 
 @app.route('/<path:path>')
-def catchall(path):
-    return render_template_string(index())
+def catch_all(path):
+    return index()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)), debug=False)
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port, debug=False)
