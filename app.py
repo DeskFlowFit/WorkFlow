@@ -6,11 +6,9 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return '''<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkFlow</title>
+    <title>WorkFlow - DeskFlow</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { width: 100%; height: 100vh; }
