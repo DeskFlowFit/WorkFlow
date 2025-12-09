@@ -2,14 +2,13 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy ALL files FIRST (including index.html, vite.config.js, src/, etc.)
-COPY . .
+COPY package*.json ./
 
-# THEN install dependencies
 RUN npm install
 
-# THEN build with Vite
 RUN npm run build
+
+COPY . .
 
 EXPOSE 8080
 
