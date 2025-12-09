@@ -1,0 +1,7 @@
+{
+  "name": "DeskFlow",
+  "description": "A scientifically-backed micro-workout app for sedentary desk workers.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
